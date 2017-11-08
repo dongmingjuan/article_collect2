@@ -1,0 +1,11 @@
+<div class="col-md-8">
+  编辑文章
+  <%= simple_form_for @article do |f| %>
+    <%= f.input :title, label: "文章标题" %>
+    <%= f.input :content,label: "文章内容" %>
+    <%= f.input :from, label: "from" %>
+    <%= f.input :url, label: "url" %>
+    <%= f.input :read_number, label: "点击次数" %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>

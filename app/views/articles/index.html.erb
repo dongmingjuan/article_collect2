@@ -1,0 +1,33 @@
+<div class="col-md-10">
+  <div class="pull-right">
+    <%= link_to "新建文章", new_article_path, class: "btn btn-primary btn-xs" %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+     <tr>
+        <th>Title</th>
+        <th>From</th>
+        <th>Url</th>
+        <th>Readnumber</th>
+        <th>创建时间</th>
+        <th>操作</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.from %></td>
+          <td><%= article.url %></td>
+          <td><%= article.read_number %></td>
+          <td><%= article.created_at %></td>
+          <td>
+            <%= link_to("edit", edit_article_path(article))%>
+            <%= link_to("show", article_path(article))%>
+            <%= link_to("delete", article_path(article), method: :delete)%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
