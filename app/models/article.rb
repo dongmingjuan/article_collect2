@@ -8,4 +8,6 @@ class Article
   field :read_number, type: Integer
   validates_presence_of :title, message: "标题不能为空"
   validates_presence_of :url, message: "来源不能为空"
+
+  belongs_to :user
 end

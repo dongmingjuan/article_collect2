@@ -1,0 +1,9 @@
+<div class="col-md-offset-2"
+  <% if !current_user %>
+     <%= link_to("注册", new_user_registration_path) %>
+     <%= link_to("登录", new_user_session_path)%>
+  <% else %>
+     <a> Hi!, <%= current_user.email %></a>
+     <%= link_to("退出", destroy_user_session_path, method: :delete) %>
+  <% end %>
+</div>

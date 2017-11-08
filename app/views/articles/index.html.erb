@@ -9,6 +9,7 @@
         <th>From</th>
         <th>Url</th>
         <th>Readnumber</th>
+        <th>采集者</th>
         <th>创建时间</th>
         <th>操作</th>
      </tr>
@@ -20,6 +21,7 @@
           <td><%= article.from %></td>
           <td><%= article.url %></td>
           <td><%= article.read_number %></td>
+          <td><%= article.user&.email %></td>
           <td><%= article.created_at %></td>
           <td>
             <%= link_to("edit", edit_article_path(article))%>
