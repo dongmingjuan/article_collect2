@@ -37,6 +37,9 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'cancancan'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave-upyun'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
