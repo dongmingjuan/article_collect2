@@ -1,10 +1,11 @@
 <div class="col-md-7">
-    <% if @article.image.present? %>
-      <%= image_tag(@article.image.thumb.url, class: "thumbnail") %>
+    <% if @article.image_url %>
+    <%= @article.image_url("720x240") %>
+      <%= image_tag(@article.image_url("720x240"), class: "thumbnail") %>
     <% else %>
       <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
     <% end %>
     <%= link_to("Download Image", @article.image_url)%>
     <br>
-    <%= link_to ("修改图片", edit_article_path(@article)%>
+
 </div>

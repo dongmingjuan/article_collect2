@@ -1,6 +1,7 @@
 <div class="col-md-10">
   <div class="pull-right">
     <%= link_to "新建文章", new_article_path, class: "btn btn-primary btn-xs" %>
+    <%= link_to "新建标签", new_label_path, class: "btn btn-primary btn-xs"%>
   </div>
   <table class="table table-bordered">
     <thead>
@@ -11,7 +12,9 @@
         <th>Readnumber</th>
         <th>采集者</th>
         <th>创建时间</th>
+        <th>标签</th>
         <th>操作</th>
+
      </tr>
     </thead>
     <tbody>
@@ -24,12 +27,17 @@
           <td><%= article.user&.email %></td>
           <td><%= article.created_at %></td>
           <td>
+                <% article.labels.each do |l| %>
+                   <%= raw l.name %>
+                <% end %>
+          </td>
+          <td>
             <%= link_to("edit", edit_article_path(article))%>
             <%= link_to("show", article_path(article))%>
             <%= link_to("delete", article_path(article), method: :delete)%>
           </td>
         </tr>
-      <% end %>
+       <% end %>
     </tbody>
   </table>
 </div>

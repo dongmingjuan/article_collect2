@@ -12,5 +12,5 @@ class Article
   validates_presence_of :url, message: "来源不能为空"
 
   belongs_to :user
-
+  has_and_belongs_to_many :labels
 end

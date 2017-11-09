@@ -1,0 +1,26 @@
+<div class="col-md-10">
+  <div class="pull-right">
+    <%= link_to "返回首页", articles_path, class: "btn btn-primary btn-xs" %>
+    <%= link_to "新建标签", new_label_path, class: "btn btn-primary btn-xs"%>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+     <tr>
+        <th>Name</th>
+        <th></th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @labels.each do |label| %>
+        <tr>
+          <td><%= label.name %></td>
+          <td>
+            <%= link_to("edit", edit_label_path(label))%>
+            <%= link_to("show", label_path(label))%>
+            <%= link_to("delete", label_path(label), method: :delete)%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

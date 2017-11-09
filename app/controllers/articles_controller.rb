@@ -5,8 +5,12 @@ class ArticlesController < ApplicationController
      @articles = Article.all
    end
    def new
+     @labels = Label.all.map { |label| [label.name, label.id.to_s] }
    end
    def create
+     @article = current_user.articles.build(article_params)
+     selected_labels = Label.in(id: params["checked_labels"].try(:values))
+     @article.labels << selected_labels
      if @article.save
        redirect_to articles_path
      else
@@ -14,8 +18,11 @@ class ArticlesController < ApplicationController
      end
    end
    def edit
+     @labels = Label.all.map { |label| [label.name, label.id.to_s] }
    end
    def update
+     selected_labels = Label.in(id: params["checked_labels"].try(:values))
+     @article.labels << selected_labels
      if @article.update(article_params)
        redirect_to articles_path
      else
@@ -30,6 +37,6 @@ class ArticlesController < ApplicationController
    end
    private
    def article_params
-     params.require(:article).permit(:title, :content, :from, :url, :read_number, :iamge)
+     params.require(:article).permit(:title, :content, :from, :url, :read_number, :image)
    end
  end
