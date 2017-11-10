@@ -14,6 +14,25 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  def activeall
+    User.update_all(active: true)
+    redirect_to  users_path
+  end
+  def unactiveall
+    User.update_all(active: false)
+    redirect_to  users_path
+  end
+  def active
+    @user = User.find(params[:id])
+    @user.update(active: true)
+    redirect_to users_path
+  end
+  def unactive
+    @user = User.find(params[:id])
+    @user.update(active: false)
+    redirect_to users_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :userphoto)
