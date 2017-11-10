@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :articles
   resources :labels
   resources :users, path: :managers
+  resources :pictures
   root "articles#index"
 end

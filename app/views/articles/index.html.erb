@@ -1,10 +1,11 @@
 <div class="col-md-10">
   <div class="pull-left">
       <%= link_to "账号管理", users_path, class: "btn btn-danger" %>
+      <%= link_to "标签管理", labels_path, class: "btn btn-danger" %>
+      <%= link_to "图片管理", pictures_path, class: "btn btn-danger" %>
   </div>
   <div class="pull-right">
     <%= link_to "新建文章", new_article_path, class: "btn btn-primary btn-xs" %>
-    <%= link_to "新建标签", new_label_path, class: "btn btn-primary btn-xs"%>
   </div>
   <table class="table table-bordered">
     <thead>
@@ -16,6 +17,7 @@
         <th>采集者</th>
         <th>创建时间</th>
         <th>标签</th>
+        <th>图片</th>
         <th>操作</th>
 
      </tr>
@@ -33,6 +35,12 @@
                 <% article.labels.each do |l| %>
                    <%= raw l.name %>
                 <% end %>
+          </td>
+          <td>
+            <% article.pictures.each do |p| %>
+                  <%= raw p.photo %>
+                  <%= image_tag(p.photo.url("720x240"), class: "thumbnail") %>
+            <% end %>
           </td>
           <td>
             <%= link_to("edit", edit_article_path(article))%>

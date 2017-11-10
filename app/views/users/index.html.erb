@@ -8,6 +8,7 @@
         <th>邮箱</th>
         <th>用户名</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,17 @@
       <tr>
           <td><%= user.email %></td>
           <td><%= user.username %></td>
+          <td>
+            <div class="col-md-7">
+                <% if user.userphoto_url %>
+                <%= user.userphoto_url("720x240") %>
+                  <%= image_tag(user.userphoto_url("720x240"), class: "thumbnail") %>
+                <% else %>
+                  <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+                <% end %>
+                <%= link_to("Download Image", user.userphoto_url)%>
+            </div>
+          </td>
           <td>
             <%= link_to "edit", edit_user_path(user)%>
           </td>

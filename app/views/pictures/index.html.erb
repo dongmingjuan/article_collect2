@@ -1,0 +1,19 @@
+<div class="pull-right">
+  <a class="btn btn-primary" href="<%= new_picture_path %>">new_picture</a>
+  <%= link_to("new_picture", new_picture_path, class: "btn btn-primary")%>
+</div>
+<div class="col-md-7">
+  <% @pictures.each do |picture| %>
+   <tr>
+    <% if picture.photo_url %>
+    <%= picture.photo_url("720x240") %>
+      <img src="<%= picture.photo_url("720x240") %>" class="thumbnail" alt="">
+      <%= image_tag(picture.photo_url("720x240"), class: "thumbnail") %>
+    <% else %>
+      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+    <% end %>
+    <%= link_to("Download Photo", picture.photo_url)%>
+   </tr>
+  <% end %>
+
+</div>
