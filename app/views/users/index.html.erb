@@ -1,0 +1,25 @@
+<div class="col-md-10">
+  <div class="pull-right">
+    <%= link_to "new", new_user_path %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>邮箱</th>
+        <th>用户名</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+          <td><%= user.email %></td>
+          <td><%= user.username %></td>
+          <td>
+            <%= link_to "edit", edit_user_path(user)%>
+          </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
    def index
-     @articles = Article.all
+     @articles = Article.all.includes(:user,:labels)
    end
    def new
      @labels = Label.all.map { |label| [label.name, label.id.to_s] }
