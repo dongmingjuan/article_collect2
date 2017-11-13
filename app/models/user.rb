@@ -37,4 +37,9 @@ class User
   # field :locked_at,       type: Time
   has_many :articles
   field :active, type: Boolean, default: false
+  field :role,              type: String
+  ROLES = [:admin, :user, :collecter]
+  def admin?
+    role == 'admin'
+  end
 end

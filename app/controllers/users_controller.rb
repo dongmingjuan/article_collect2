@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   def index
      @users = User.all
   end
@@ -35,6 +36,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :userphoto)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :userphoto, :role)
   end
 end

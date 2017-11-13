@@ -8,7 +8,9 @@
     <thead>
       <tr>
         <th>邮箱</th>
+        <th>状态</th>
         <th>用户名</th>
+        <th>角色</th>
         <th></th>
         <th></th>
         <th></th>
@@ -18,7 +20,9 @@
       <% @users.each do |user| %>
       <tr>
           <td><%= user.email %></td>
+          <td><%= user.active %></td>
           <td><%= user.username %></td>
+          <td><%= user.role %></td>
           <td>
             <div class="col-md-7">
                 <% if user.userphoto_url %>
