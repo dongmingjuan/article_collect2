@@ -3,7 +3,14 @@
       <%= link_to "账号管理", users_path, class: "btn btn-danger" %>
       <%= link_to "标签管理", labels_path, class: "btn btn-danger" %>
       <%= link_to "图片管理", pictures_path, class: "btn btn-danger" %>
+      <p>用户积分：</p><%= current_user.credit %>
+       <% if current_user.credit_logs.between(created_at: [Date.today.beginning_of_day, Date.today.end_of_day]).any? %>
+          <p>已经签到</p>
+       <% else %>
+          <%= link_to("签到", sign_in_user_path(current_user, page: params[:page]), method: :put, class: "btn btn-success btn-xs") %>
+       <% end %>
   </div>
+
   <div class="pull-right">
     <%= link_to "新建文章", new_article_path, class: "btn btn-primary btn-xs" %>
   </div>
@@ -30,7 +37,7 @@
           <td><%= article.url %></td>
           <td><%= article.read_number %></td>
           <td><%= article.user&.email %></td>
-          <td><%= article.created_at %></td>
+          <td><%= article.created_at.strftime("%Y/%m/%d %I:%M %p") %></td>
           <td>
                 <% article.labels.each do |l| %>
                    <%= raw l.name %>

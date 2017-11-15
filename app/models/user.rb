@@ -36,10 +36,21 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
   has_many :articles
+
   field :active, type: Boolean, default: false
   field :role,              type: String
   ROLES = [:admin, :user, :collecter]
   def admin?
     role == 'admin'
+  end
+  field :credit, type: Integer, default: 0
+  has_many :credit_logs
+  def sign
+    if self.credit_logs.between(created_at: [Date.today.beginning_of_day, Date.today.end_of_day]).any?
+    else
+      add_credit = rand(10)
+      self.inc(credit: add_credit)
+      self.credit_logs.create(credit: add_credit, type: "用户签到")
+    end
   end
 end

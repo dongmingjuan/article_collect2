@@ -11,6 +11,9 @@
         <th>状态</th>
         <th>用户名</th>
         <th>角色</th>
+        <th>积分</th>
+        <th>签到情况</th>
+        <th>积分纪录</th>
         <th></th>
         <th></th>
         <th></th>
@@ -23,7 +26,16 @@
           <td><%= user.active %></td>
           <td><%= user.username %></td>
           <td><%= user.role %></td>
-          <td>
+          <td><%= user.credit %></td>
+         <td>
+           <% if user.credit_logs.between(created_at: [Date.today.beginning_of_day, Date.today.end_of_day]).any? %>
+              <p>已经签到</p>
+           <% else %>
+              <%= link_to("签到", sign_in_user_path(user, page: params[:page]), method: :put, class: "btn btn-success btn-xs") %>
+           <% end %>
+        <td>
+      
+
             <div class="col-md-7">
                 <% if user.userphoto_url %>
                 <%= user.userphoto_url("720x240") %>

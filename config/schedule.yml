@@ -1,0 +1,3 @@
+second_job:
+  cron: "*/1 * * * *"
+  class: "HardWorker"
