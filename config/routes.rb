@@ -3,7 +3,11 @@ require 'sidekiq/cron/web'
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :articles
+  resources :articles do
+    member do
+     put 'add_vote'
+    end
+  end
   resources :labels
   mount Sidekiq::Web => 'sidekiq／cron'
   resources :users, path: :managers do
@@ -18,5 +22,6 @@ Rails.application.routes.draw do
     end
   end
   resources :pictures
+  resources :messages
   root "articles#index"
 end

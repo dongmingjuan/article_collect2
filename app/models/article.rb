@@ -8,6 +8,7 @@ class Article
   field :url, type: String
   field :read_number, type: Integer
   field :image, type: String
+  field :vote, type: Integer, default: 0
   validates_presence_of :title, message: "标题不能为空"
   validates_presence_of :url, message: "来源不能为空"
 

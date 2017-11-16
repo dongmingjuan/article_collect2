@@ -32,6 +32,14 @@ class ArticlesController < ApplicationController
        render :edit
      end
    end
+
+   def add_vote
+    @article = Article.find(params[:id])
+    @article.vote += 2
+    @article.save
+    redirect_to articles_path
+   end
+
    def destroy
      @article.destroy
      redirect_to articles_path
@@ -40,6 +48,6 @@ class ArticlesController < ApplicationController
    end
    private
    def article_params
-     params.require(:article).permit(:title, :content, :from, :url, :read_number, :image)
+     params.require(:article).permit(:title, :content, :from, :url, :read_number, :image, :vote)
    end
  end

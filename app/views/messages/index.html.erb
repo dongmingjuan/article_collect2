@@ -1,0 +1,32 @@
+<div class="col-md-10">
+  <div class="pull-right">
+    <%= link_to "返回首页", articles_path, class: "btn btn-primary btn-xs" %>
+    <% if can? :create, @message %>
+        <%= link_to "新建站内信", new_message_path, class: "btn btn-primary btn-xs"%>
+   <% end %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+     <tr>
+        <th>Title</th>
+        <th>Created_at </th>
+        <th>状态</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @messages.each do |message| %>
+        <tr>
+          <td><%= link_to message.title, message_path(message) %></td>
+          <td><%= message.created_at.strftime("%F %T")%></td>
+          <td>
+            <% if message.active %>
+               <p>已读</p>
+            <% else %>
+               <p>未读</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

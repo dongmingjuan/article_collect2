@@ -5,5 +5,14 @@
   <% else %>
      <a> Hi!, <%= current_user.email %></a>
      <%= link_to("退出", destroy_user_session_path, method: :delete) %>
+     <li>
+      <%= link_to messages_path  do  %>
+          站内信 <i class="fa fa-envelope-o" aria-hidden="true"> 未读信息：(<%= @messages_count%>)</i>
+      <% end %>
+     </li>
+
+      <td>
+      </td>
+     </li>
   <% end %>
 </div>

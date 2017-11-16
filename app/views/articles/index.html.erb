@@ -1,5 +1,6 @@
 <div class="col-md-10">
   <div class="pull-left">
+      <%= link_to "控制面板",  sidekiq_web_path, class: "btn btn-danger"%>
       <%= link_to "账号管理", users_path, class: "btn btn-danger" %>
       <%= link_to "标签管理", labels_path, class: "btn btn-danger" %>
       <%= link_to "图片管理", pictures_path, class: "btn btn-danger" %>
@@ -26,6 +27,8 @@
         <th>标签</th>
         <th>图片</th>
         <th>操作</th>
+        <th>投票</th>
+        <th>票数:</th>
 
      </tr>
     </thead>
@@ -54,6 +57,8 @@
             <%= link_to("show", article_path(article))%>
             <%= link_to("delete", article_path(article), method: :delete)%>
           </td>
+          <td><%= article.vote %></td>
+          <td><%= link_to("投票", add_vote_article_path(article), method: :put, class: "btn btn-sm btn-danger")%></td>
         </tr>
        <% end %>
     </tbody>
