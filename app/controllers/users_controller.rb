@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def index
      @users = User.all.page params[:page]
+     @users = @users.where(email: /#{params[:email]}/) unless params[:email].blank?
+     @users = @users.where(username: /#{params[:username]}/) unless params[:username].blank?
   end
 
   def new

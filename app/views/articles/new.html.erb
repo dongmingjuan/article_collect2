@@ -20,6 +20,14 @@
        <% end %>
       </div>
     </div>
+    <div class="text-center">
+     <form action="/pictures" method="get">
+        图片名字
+        <input type="text" id="name" name="name" value="<%= params[:name]%>">
+        图片类型
+        <input type="text" id="type" name="type" value="<%= params[:type]%>">
+        <input type="submit" name="" value="搜索">
+     </form>
     <div class="form-group string required article_title">
     <label class="col-sm-2 control-label string required" for="article_title">
       从图库中选择图片</label>
@@ -28,8 +36,8 @@
          <input id="" name="checked_pictures[<%= index %>]" type="checkbox" value="<%= picture[1] %>"
                <%= @article.pictures.find(picture[1]).nil? ? '' : 'checked' %> />
          <label for="pet_dog">
-           <%= raw picture[0]  %>
-           <%= image_tag(picture[0], class: "thumbnail") %>
+           <!-- <%= raw picture[0]  %> -->
+           <!-- <%= image_tag(picture[0], class: "thumbnail") %> -->
             <img src="<%= picture[0].url('720x240') %>">
          </label>
        <% end %>

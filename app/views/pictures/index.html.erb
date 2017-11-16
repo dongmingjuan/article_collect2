@@ -2,18 +2,40 @@
   <a class="btn btn-primary" href="<%= new_picture_path %>">new_picture</a>
   <%= link_to("new_picture", new_picture_path, class: "btn btn-primary")%>
 </div>
+<div class="text-center">
+ <form action="/pictures" method="get">
+    图片名字
+    <input type="text" id="name" name="name" value="<%= params[:name]%>">
+    图片类型
+    <input type="text" id="type" name="type" value="<%= params[:type]%>">
+    <input type="submit" name="" value="搜索">
+ </form>
+</div>
 <div class="col-md-7">
+<table>
+  <thead>
+    <th>图片</th>
+    <th width="80px">图片名字</th>
+    <th width="80px">图片类型</th>
+  </thead>
+  <tbody>
   <% @pictures.each do |picture| %>
    <tr>
-    <% if picture.photo_url %>
-    <%= picture.photo_url("720x240") %>
-      <img src="<%= picture.photo_url("720x240") %>" class="thumbnail" alt="">
-      <%= image_tag(picture.photo_url("720x240"), class: "thumbnail") %>
-    <% else %>
-      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
-    <% end %>
-    <%= link_to("Download Photo", picture.photo_url)%>
+    <td>
+      <% if picture.photo_url %>
+        <!-- <%= picture.photo_url("720x240") %> -->
+        <img src="<%= picture.photo_url("720x240") %>" class="thumbnail" alt="">
+        <!-- <%= image_tag(picture.photo_url("720x240"), class: "thumbnail") %> -->
+      <% else %>
+        <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+      <% end %>
+      <%= link_to("Download Photo", picture.photo_url)%>
+    </td>
+    <td><%= picture.name %></td>
+    <td><%= picture.type %></td>
    </tr>
   <% end %>
+  </tbody>
+</table>
 
 </div>

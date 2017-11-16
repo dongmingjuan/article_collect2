@@ -4,6 +4,15 @@
     <%= link_to "一键激活", activeall_users_path, method: :put, class: "btn btn-success btn-xs"%>
     <%= link_to "一键关闭", unactiveall_users_path, method: :put, class: "btn btn-success btn-xs"%>
   </div>
+  <div class="text-center">
+    <form action="/managers" method="get">
+      email
+      <input type="text" id='email' name="email" value="<%= params[:email]%>">
+      username
+      <input type="text" id='username' name="username" value="<%= params[:username]%>">
+      <input type="submit" name="" value="搜索">
+    </form>
+  </div>
   <table class="table table-bordered">
     <thead>
       <tr>

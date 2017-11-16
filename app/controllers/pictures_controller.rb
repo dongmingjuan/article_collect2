@@ -3,6 +3,8 @@ class PicturesController < ApplicationController
     load_and_authorize_resource
     def index
        @pictures = Picture.all
+       @pictures = @pictures.where(name: /#{params[:name]}/) unless params[:name].blank?
+       @pictures = @pictures.where(type: /#{params[:type]}/) unless params[:type].blank?
     end
     def new
        @picture = Picture.new
@@ -17,6 +19,6 @@ class PicturesController < ApplicationController
     end
     private
     def picture_params
-      params.require(:picture).permit(:photo)
+      params.require(:picture).permit(:photo, :name, :type)
     end
 end

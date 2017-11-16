@@ -3,10 +3,14 @@ class ArticlesController < ApplicationController
   load_and_authorize_resource
    def index
      @articles = Article.all.includes(:user,:labels, :pictures)
+     @articles = @articles.where(title: /#{params[:title]}/) unless params[:title].blank?
+     @articles = @articles.where(content: /#{params[:content]}/) unless params[:content].blank?
    end
    def new
      @labels = Label.all.map { |label| [label.name, label.id.to_s] }
      @pictures = Picture.all.map { |picture| [picture.photo, picture.id.to_s]}
+     @pictures = @pictures.where(name: /#{params[:name]}/) unless params[:name].blank?
+     @pictures = @pictures.where(type: /#{params[:type]}/) unless params[:type].blank?
    end
    def create
      @article = current_user.articles.build(article_params)
