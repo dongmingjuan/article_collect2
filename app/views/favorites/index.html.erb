@@ -1,0 +1,24 @@
+<div class="col-md-10">
+  <div class="pull-right">
+    <%= link_to "返回首页", articles_path, class: "btn btn-primary btn-xs" %>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+     <tr>
+        <th>Title</th>
+        <th>username </th>
+        <th>状态</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @favorites.each do |favorite| %>
+        <tr>
+          <td><%= link_to favorite.article_title, article_path(favorite.article_id) %></td>
+          <td><%= favorite.username %></td>
+          <td>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

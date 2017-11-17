@@ -54,4 +54,5 @@ class User
     end
   end
   has_many :comments
+  has_many :favorites
 end

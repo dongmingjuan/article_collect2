@@ -1,5 +1,12 @@
 <div class="col-md-7">
-    <h2><%= @article.title %></h2>
+    <h2><%= @article.title %>
+      <div class="pull-right">
+        <% if current_user.favorites.find_by(article: @article) %>
+          <%= link_to("取消收藏", unfavorating_article_path, method: :put,  class: "btn btn-sm btn-info")%>
+        <% else %>
+          <%= link_to("收藏", favorating_article_path, method: :put, class: "btn btn-sm btn-info")%>
+        <% end %>
+      </div>
     <p><%= @article.content %></p>
     <br>
     <% if @article.image_url %>
@@ -36,5 +43,5 @@
         </tr>
         <% end %>
       </tbody>
-</table>
+    </table>
 </div>

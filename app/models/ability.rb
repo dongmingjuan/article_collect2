@@ -6,10 +6,11 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif  user.role == 'user'
-      can :read, Message
-      can :read, Label
-      can :manage, Picture
-      can :manage, Article, user: user
+      can :manage, :all
+      # can :read, Message
+      # can :read, Label
+      # can :manage, Picture
+      # can :manage, Article, user: user
     elsif user.role == 'collecter'
       can :read, Article
       can :read, Picture

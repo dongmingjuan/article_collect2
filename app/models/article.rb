@@ -15,4 +15,6 @@ class Article
   has_and_belongs_to_many :labels
   has_and_belongs_to_many :pictures
   has_many :comments
+  field :favorate, type: Boolean, default: false
+  has_many :favorites
 end

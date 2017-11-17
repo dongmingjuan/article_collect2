@@ -1,0 +1,8 @@
+<div class="col-md-8">
+  <h2>创建站内信</h2>
+  <%= simple_form_for @message do |f| %>
+    <%= f.input :title, label: "站内信标题" %>
+    <%= f.input :content, label: "站内信内容"%>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>

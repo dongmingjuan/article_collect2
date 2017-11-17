@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 		resources :comments
 		member do
 			put 'add_vote'
+			put 'favorating'
+			put 'unfavorating'
 		end
 		collection do
 			get 'descending'
@@ -30,10 +32,12 @@ Rails.application.routes.draw do
 			put 'unactiveall'
 		end
 	end
+	resources :favorites, only: [:index]
 	resources :pictures
 	resources :messages
 	root "articles#index"
 	namespace :account do
    resources :comments
+	 resources :articles
   end
 end
