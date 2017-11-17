@@ -53,4 +53,5 @@ class User
       self.credit_logs.create(credit: add_credit, type: "用户签到")
     end
   end
+  has_many :comments
 end

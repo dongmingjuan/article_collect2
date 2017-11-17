@@ -68,7 +68,7 @@
     <tbody>
       <% @articles.each do |article| %>
         <tr>
-          <td><%= article.title %></td>
+          <td><%= link_to(article.title, article_path(article))%></td>
           <td><%= article.from %></td>
           <td><%= article.url %></td>
           <td><%= article.read_number %></td>
