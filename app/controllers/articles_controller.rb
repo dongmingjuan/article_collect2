@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
    def index
-     @articles = Article.all.includes(:user,:labels, :pictures)
+     @articles = Article.all.order_by( :created_at => 'desc').includes(:user,:labels, :pictures)
      @articles = @articles.where(title: /#{params[:title]}/) unless params[:title].blank?
      @articles = @articles.where(content: /#{params[:content]}/) unless params[:content].blank?
    end
@@ -49,6 +49,36 @@ class ArticlesController < ApplicationController
      redirect_to articles_path
    end
    def show
+   end
+   def descending
+     @articles = Article.all
+     @articles = @articles.order_by(:read_number => 'desc')
+     render :index
+   end
+   def ascending
+     @articles = Article.all
+     @articles = @articles.order_by(:read_number => 'asc')
+     render :index
+   end
+   def down
+     @articles = Article.all
+     @articles = @articles.order_by(:vote => 'desc')
+     render :index
+   end
+   def up
+     @articles = Article.all
+     @articles = @articles.order_by(:vote => 'asc')
+     render :index
+   end
+   def timedown
+     @articles = Article.all
+     @articles = @articles.order_by(:created_at => 'desc')
+     render :index
+   end
+   def timeup
+     @articles = Article.all
+     @articles = @articles.order_by(:created_at => 'asc')
+     render :index
    end
    private
    def article_params

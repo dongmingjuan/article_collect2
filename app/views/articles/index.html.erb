@@ -30,14 +30,38 @@
         <th>Title</th>
         <th>From</th>
         <th>Url</th>
-        <th>Readnumber</th>
+        <th width=100px>
+          Readnumber
+           <%= link_to descending_articles_path  do  %>
+               <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+           <% end %>
+           <%= link_to ascending_articles_path  do  %>
+               <i class="fa fa-sort-amount-asc" aria-hidden="true"> </i>
+           <% end %>
+        </th>
         <th>采集者</th>
-        <th>创建时间</th>
+        <th>
+          创建时间
+          <%= link_to timedown_articles_path  do  %>
+              <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to timeup_articles_path  do  %>
+              <i class="fa fa-sort-amount-asc" aria-hidden="true"> </i>
+          <% end %>
+        </th>
         <th>标签</th>
         <th>图片</th>
         <th>操作</th>
         <th>投票</th>
-        <th>票数:</th>
+        <th>
+          票数:
+          <%= link_to down_articles_path  do  %>
+              <i class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to up_articles_path  do  %>
+              <i class="fa fa-sort-amount-asc" aria-hidden="true"> </i>
+          <% end %>
+        </th>
 
      </tr>
     </thead>
@@ -73,4 +97,3 @@
     </tbody>
   </table>
 </div>
- 
