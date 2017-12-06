@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  layout 'admin'
 
   def index
     @articles = Article.all.order_by( :created_at => 'desc').includes(:user,:labels, :pictures)
